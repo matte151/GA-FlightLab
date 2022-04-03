@@ -1,0 +1,32 @@
+<%- include('../partials/header') %> 
+
+    <h1>Display All Flights</h1>
+    <div class="flightOverall" id="flightHeaders">
+        <div class="flightNo">Flight Number</div>
+        <div class="airport">Airport</div>
+        <div class="airline">Airline</div>
+        <div class="departs">Departure Date</div>
+    </div>
+    <br>
+    <div class="flightOverall">
+        <% allFlights.forEach(flight => { %>
+            <div class="flightNo"> <%= flight.flightNo %> </div>
+            <div class="airport"> <%= flight.airport %> </div>
+            <div class="airline"> <%= flight.airline %></div>
+            <% if (flight.departs < new Date()) { %>
+                <div class="departs" id="red"> <%= flight.departs %> </div>
+                <% } else { %>
+                    <div class="departs"> <%= flight.departs %> </div>
+            <% } %>
+            <div class="button"><a href="flights/<%= flight._id %>">Details</a></div>
+            <br>
+        <% }) %>
+    </div>
+
+
+
+
+ 
+    <a href="/flights/new">Add Flight</a>
+
+<%- include('../partials/footer') %> 

@@ -1,0 +1,55 @@
+<%- include('../partials/header') %> 
+
+<h1>Display All Flights</h1>
+<div class="flightOverall" id="flightHeaders">
+    <div class="flightNo">Flight Number</div>
+    <div class="airport">Airport</div>
+    <div class="airline">Airline</div>
+    <div class="departs">Departure Date</div>
+</div>
+<br>
+<div class="flightOverall">
+        <div class="flightNo"> <%= flight.flightNo %> </div>
+        <div class="airport"> <%= flight.airport %> </div>
+        <div class="airline"> <%= flight.airline %></div>
+        <% if (flight.departs < new Date()) { %>
+            <div class="departs" id="red"> <%= flight.departs %> </div>
+            <% } else { %>
+                <div class="departs"> <%= flight.departs %> </div>
+        <% } %>
+        <div class="button"><form method="POST" action="/flights/<%= flight.id %>?_method=DELETE"><button type="submit" id="red" >Delete</button></form></div>
+        <br>
+</div>
+
+<% if (flight.destinations.length) { %>
+ 
+<div class = "destinationOverall">
+    <div class="destinationHeaders">
+        <div class="airportDestination">Destination</div>
+        <div class="dateDestination">Arrival Date</div>
+    </div>
+    <% flight.destinations.forEach(d => { %>
+        <div class="destinationEach">
+            <div class="airportDestination"><%= d.airport %></div>
+            <div class="dateDestination"><%= d.arrival %></div>
+        </div>
+    <% }) %>
+</div>
+<% } else { %>
+<br>
+<% } %>
+<form id="add-destination-form" class="destinationOverall" method="POST" action="/flights/<%= flight._id %>/destinations">
+<label class="airportDestination">Desination</label>
+<select name="airport">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+</select>
+<label>Departure Date:</label>
+    <input type="date" name="arrival">
+<input type="submit" value="Add Destination">   
+</form>
+ 
+<%- include('../partials/footer') %> 

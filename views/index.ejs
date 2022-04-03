@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./partials/header') %> 
+
+    <p>Welcome to <%= title %>.  There's a bar above, go ahead and use it, but don't expect Orbitz... Because this is NOT Orbitz!</p>
+
+    <a href="/flights">Go to Flights... and stuff!</a>
+    <br>
+    <br>
+    <a href="/flights/new">Add a new flight</a>
+
+    <%- include('./partials/footer') %> 
