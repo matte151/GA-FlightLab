@@ -20,7 +20,7 @@
         <div class="button"><form method="POST" action="/flights/<%= flight.id %>?_method=DELETE"><button type="submit" id="red" >Delete</button></form></div>
         <br>
 </div>
-
+<br><br>
 <% if (flight.destinations.length) { %>
  
 <div class = "destinationOverall">
@@ -28,7 +28,8 @@
         <div class="airportDestination">Destination</div>
         <div class="dateDestination">Arrival Date</div>
     </div>
-    <% flight.destinations.forEach(d => { %>
+    <br>
+        <% flight.destinations.forEach(d => { %>
         <div class="destinationEach">
             <div class="airportDestination"><%= d.airport %></div>
             <div class="dateDestination"><%= d.arrival %></div>
@@ -38,8 +39,10 @@
 <% } else { %>
 <br>
 <% } %>
+<br>
+<div class = "addDestinationsDiv">
 <form id="add-destination-form" class="destinationOverall" method="POST" action="/flights/<%= flight._id %>/destinations">
-<label class="airportDestination">Desination</label>
+<label class="newAirportDestination">Desination</label>
 <select name="airport">
     <option value="AUS">AUS</option>
     <option value="DFW">DFW</option>
@@ -48,8 +51,36 @@
     <option value="SAN">SAN</option>
 </select>
 <label>Departure Date:</label>
-    <input type="date" name="arrival">
+    <input type="date" name="arrival" class="newDateDestination">
 <input type="submit" value="Add Destination">   
 </form>
- 
+</div>
+ <H3>Current Tickets</H3>
+<div class="ticketOverall">
+    <div class ="ticketHeaders">
+        <div class="seat">Seat</div>
+        <div class="price">Price</div>
+        <div class="flight">Flight</div>
+    </div>
+    <div class ="ticketEach">
+        <div class="seat"><%= tickets.seat %></div>
+        <div class="price"><%= tickets.price %></div>
+        <div class="flight"><%= flight.number %></div>
+    </div>
+</div>
+<button id="newTicketButton">New Ticket</button>
+
+<div class="newTicketsDiv">
+    <H3>Add Tickets</H3>
+<form id="add-ticket-form" class ="ticketOverall" method="POST" action="/flights/<%= flight._id %>/tickets">
+    <label>Seat</label><input name="seat" required pattern="[A-F][1-9]\d?">
+    <label>Price</label><input name="price" type="number" min="0">
+    <input type = "hidden" name="flight" value="<%= flight._id %>">
+    <input type="submit" value="Add Ticket">
+</form>
+</div>
+
+
+
+
 <%- include('../partials/footer') %> 

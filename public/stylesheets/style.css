@@ -52,6 +52,23 @@ input {
   font-weight: bold;
   font-size: 1.5em;
 }
+.destinationHeaders{
+  border-top-style: solid;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.airportDestination{
+  grid-column: 1;
+}
+.dateDestination{
+  grid-column: 2;
+}
+.destinationEach{
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .airline {
   grid-column: 3;
 }
@@ -69,4 +86,13 @@ input {
 }
 #red{
   color: red;
+}
+.newTicketsDiv{
+  display: none;
+}
+.addDestinationsDiv{
+  display: none;
+}
+.active{
+  display:block;
 }
