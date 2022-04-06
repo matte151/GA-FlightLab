@@ -55,6 +55,7 @@
 <input type="submit" value="Add Destination">   
 </form>
 </div>
+<button id="newDestButton">New Destination</button>
  <H3>Current Tickets</H3>
 <div class="ticketOverall">
     <div class ="ticketHeaders">
@@ -62,22 +63,25 @@
         <div class="price">Price</div>
         <div class="flight">Flight</div>
     </div>
-    <div class ="ticketEach">
-        <div class="seat"><%= tickets.seat %></div>
-        <div class="price"><%= tickets.price %></div>
-        <div class="flight"><%= flight.number %></div>
+    <% tickets.forEach(t => { %>
+     <div class ="ticketHeaders">
+        <div class="seat"><%= t.seat %></div>
+        <div class="price"><%= t.price %></div>
+        <div class="flight"><%= flight.flightNo %></div>
     </div>
+    <% }) %>
 </div>
 <button id="newTicketButton">New Ticket</button>
 
 <div class="newTicketsDiv">
-    <H3>Add Tickets</H3>
+    <H3>Add Ticket For Flight <%= flight.flightNo %></H3>
 <form id="add-ticket-form" class ="ticketOverall" method="POST" action="/flights/<%= flight._id %>/tickets">
     <label>Seat</label><input name="seat" required pattern="[A-F][1-9]\d?">
     <label>Price</label><input name="price" type="number" min="0">
     <input type = "hidden" name="flight" value="<%= flight._id %>">
     <input type="submit" value="Add Ticket">
 </form>
+<img id="planePicture" src="https://i.imgur.com/cEglAia.jpg" alt="">
 </div>
 
 

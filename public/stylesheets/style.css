@@ -54,7 +54,7 @@ input {
 }
 .destinationHeaders{
   border-top-style: solid;
-  width: 60%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -65,7 +65,7 @@ input {
   grid-column: 2;
 }
 .destinationEach{
-  width: 60%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -95,4 +95,27 @@ input {
 }
 .active{
   display:block;
+}
+.ticketHeaders{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.seat{
+  grid-column: 1;
+  margin: 20px;
+}
+.price{
+  grid-column: 2;
+  margin: 20px;
+}
+.flight{
+  grid-column: 3;
+  margin: 20px;
+}
+#planePicture{
+  size: 80%;
+  
 }
